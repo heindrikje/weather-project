@@ -1,0 +1,127 @@
+.card {
+  margin: 50px auto;
+  border: 1px solid #6d767d;
+  border-radius: 10px;
+  padding: 30px;
+  background: #fff8e5;
+  max-width: 700px;
+}
+h1,
+h2 {
+  color: #00a19d;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  margin-top: 15px;
+  display: inline;
+}
+h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+#search-bar {
+  padding: 10px 55px 10px 5px;
+  border: 1px solid #00a19d;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+
+.search-section {
+  margin-bottom: 40px;
+}
+
+.btn {
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  padding: 10px 9px;
+}
+
+.unit {
+  color: #00a19d;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  position: relative;
+  bottom: 30px;
+  text-decoration: none;
+  transition: all 100ms ease-in-out;
+}
+
+#unit-celsius {
+  font-weight: bold;
+}
+.unit:hover {
+  color: #047775;
+  font-size: 22px;
+}
+
+.current-time,
+.feels-like,
+.sun,
+.weather-text,
+.detailed-information,
+.weather-tip {
+  color: #e05d5d;
+  font-family: "Open Sans", sans-serif;
+}
+
+.weather-text,
+.detailed-information,
+.weather-tip {
+  margin-top: 20px;
+}
+
+.day-one,
+.day-two,
+.day-three,
+.day-four,
+.day-five,
+.day-six {
+  transition: all 100ms ease-in-out;
+}
+
+.day-one:hover,
+.day-two:hover,
+.day-three:hover,
+.day-four:hover,
+.day-five:hover,
+.day-six:hover {
+  font-weight: bolder;
+}
+
+.predicition {
+  color: #6d767d;
+  font-family: "Open Sans", sans-serif;
+}
+
+.prediction-row {
+  margin: 30px 0;
+}
+.current-time {
+  display: block;
+}
+
+#video_background {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1000;
+  overflow: hidden;
+}
+#video_pattern {
+  position: fixed;
+  opacity: 0.5;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
