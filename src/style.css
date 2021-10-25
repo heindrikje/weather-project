@@ -1,5 +1,5 @@
 .card {
-  margin: 50px auto;
+  margin: 50px auto 5px auto;
   border: 1px solid #6d767d;
   border-radius: 10px;
   padding: 40px;
@@ -106,6 +106,12 @@ form {
 }
 .current-time {
   display: block;
+}
+
+.footer {
+  font-size: 14px;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
 }
 
 #video_background {
