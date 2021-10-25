@@ -2,7 +2,7 @@
   margin: 50px auto;
   border: 1px solid #6d767d;
   border-radius: 10px;
-  padding: 30px;
+  padding: 40px;
   background: #fff8e5;
   max-width: 700px;
 }
@@ -14,7 +14,6 @@ h2 {
 
 h1 {
   font-size: 60px;
-  margin-top: 15px;
   display: inline;
 }
 h2 {
@@ -22,8 +21,12 @@ h2 {
   margin: 0;
 }
 
+form {
+  display: inline;
+}
+
 #search-bar {
-  padding: 10px 55px 10px 5px;
+  padding: 10px 340px 10px 5px;
   border: 1px solid #00a19d;
   border-radius: 4px;
   font-family: "Poppins", sans-serif;
@@ -38,7 +41,7 @@ h2 {
   border-radius: 4px;
   font-family: "Poppins", sans-serif;
   font-size: 13px;
-  padding: 10px 9px;
+  padding: 10px 15px;
 }
 
 .unit {
