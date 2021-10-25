@@ -23,6 +23,7 @@ function showTemperature(response) {
   temperatureElement.innerHTML = `${temperature}`;
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
+  console.log(response);
 }
 
 function searchCity(event) {
