@@ -31,6 +31,7 @@
           volume="0"> 
         <source src="videos/Cloudy-sky.mp4" type="video/mp4">
       </div>
+
       <div class="card">
           <span class="search-section">
             <form id="search-form">
@@ -61,11 +62,23 @@
                 </svg>
               </button>
             </span>
+
         <div class="row">
-          <div class="col">
             <h2 id="current-city">Heidelberg</h2>
             <div class="current-time"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <span class= "weather-icon">[Icon 🌤]</span>
+            <h1>23</h1>
+            <a href="#" class="unit" id="unit-celsius">°C</a>
+            <a href="#" class="unit" id="unit-fahrenheit">°F</a>
+            <div class="feels-like">Feels like 
+              <span class="weather-feels-like">21°C</span>
+            </div>
           </div>
+          <div class="col-2 weather-text text-center">Scattered clouds</div>
           <div class="col-2 sun">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -110,17 +123,8 @@
               />
             </svg>
             19:42
-          </div>
           
         </div>
-        <div class="row">
-          <div class="col-6">
-            <h1>🌤 23</h1>
-            <a href="#" class="unit" id="unit-celsius">°C</a>
-            <a href="#" class="unit" id="unit-fahrenheit">°F</a>
-            <div class="feels-like">Feels like 21°C</div>
-          </div>
-          <div class="col-3 weather-text text-center">A warm mix of clouds and sun</div>
           <div class="col-3 detailed-information text-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
