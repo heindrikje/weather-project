@@ -17,13 +17,18 @@ function formatDate(date) {
 let presentDate = document.querySelector(".current-time");
 presentDate.innerHTML = formatDate();
 
-function showTemperature(response) {
+function showWeatherConditions(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
-  console.log(response);
+  let weatherText = document.querySelector(".weather-text");
+  weatherText.innerHTML = response.data.weather[0].description;
+  let wind = document.querySelector("#wind-speed");
+  wind.innerHTML = `${response.data.wind.speed} km/h`;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `${response.data.main.humidity}% Humidity`;
 }
 
 function searchCity(event) {
@@ -34,7 +39,7 @@ function searchCity(event) {
     let apiKey = "203fa770242fcd2b9555d832a88ea567";
     let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${unit}`;
-    axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(showWeatherConditions);
   } else {
     currentCity.innerHTML = "Searching...";
     alert("Please type a city");
@@ -72,7 +77,7 @@ function showPosition(position) {
   let apiKey = "203fa770242fcd2b9555d832a88ea567";
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrl).then(showWeatherConditions);
   let reverseApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
   axios.get(reverseApiUrl).then(showCurrentCity);
 }
