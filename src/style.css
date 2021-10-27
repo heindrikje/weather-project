@@ -17,7 +17,7 @@ h1 {
   display: inline;
 }
 h2 {
-  font-size: 30px;
+  font-size: 35px;
   margin: 0;
 }
 
@@ -60,6 +60,10 @@ form {
 .unit:hover {
   color: #047775;
   font-size: 22px;
+}
+
+.current-time {
+  margin-bottom: 20px;
 }
 
 .current-time,
