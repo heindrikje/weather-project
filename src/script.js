@@ -31,23 +31,21 @@ function showWeatherConditions(response) {
   humidity.innerHTML = `${response.data.main.humidity}% Humidity`;
 }
 
-function searchCity(event) {
+function searchCity(city) {
+  let apiKey = "203fa770242fcd2b9555d832a88ea567";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showWeatherConditions);
+}
+
+function handleSubmit(event) {
   event.preventDefault();
-  let cityInput = document.querySelector("#search-bar");
-  let currentCity = document.querySelector("#current-city");
-  if (cityInput.value) {
-    let apiKey = "203fa770242fcd2b9555d832a88ea567";
-    let unit = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${unit}`;
-    axios.get(apiUrl).then(showWeatherConditions);
-  } else {
-    currentCity.innerHTML = "Searching...";
-    alert("Please type a city");
-  }
+  let city = document.querySelector("#search-bar").value;
+  searchCity(city);
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", handleSubmit);
 
 function showCurrentCity(response) {
   let respondedCurrentCity = response.data.city;
@@ -77,5 +75,7 @@ function getCurrentLocation() {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+searchCity("New York");
 
 // Hintergrund + icons: abhängig von Wetterlage
