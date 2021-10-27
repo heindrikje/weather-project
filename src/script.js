@@ -49,22 +49,6 @@ function searchCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
-function changeUnitCtoF(event) {
-  let currentTemperatureinF = document.querySelector("h1");
-  currentTemperatureinF.innerHTML = `🌤 59`;
-}
-
-function changeUnitFtoC(event) {
-  let currentTemperatureinC = document.querySelector("h1");
-  currentTemperatureinC.innerHTML = `🌤 23`;
-}
-
-let unitCelsius = document.querySelector("#unit-celsius");
-unitCelsius.addEventListener("click", changeUnitFtoC);
-
-let unitFahrenheit = document.querySelector("#unit-fahrenheit");
-unitFahrenheit.addEventListener("click", changeUnitCtoF);
-
 function showCurrentCity(response) {
   let respondedCurrentCity = response.data.city;
   let currentCity = document.querySelector("#current-city");
@@ -95,5 +79,3 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 // Hintergrund + icons: abhängig von Wetterlage
-// ein paar Städte als Bsp.
-// Current Location Button mit in die Reihe
