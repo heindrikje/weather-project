@@ -22,13 +22,14 @@ function showWeatherConditions(response) {
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
   let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = response.data.name;
+  currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let weatherText = document.querySelector(".weather-text");
   weatherText.innerHTML = response.data.weather[0].description;
   let wind = document.querySelector("#wind-speed");
   wind.innerHTML = `${response.data.wind.speed} km/h`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}% Humidity`;
+  console.log(response.data);
 }
 
 function searchCity(city) {
@@ -79,3 +80,6 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 searchCity("New York");
 
 // Hintergrund + icons: abhängig von Wetterlage
+// noch mal neue Farben?
+// vertical lines between forecast days?
+// erster Buchstabe weather text groß

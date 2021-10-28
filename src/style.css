@@ -3,7 +3,8 @@
   border: 1px solid #6d767d;
   border-radius: 10px;
   padding: 40px;
-  background: #fff8e5;
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+
   max-width: 700px;
 }
 h1,
@@ -72,11 +73,10 @@ form {
 .weather-text,
 .detailed-information,
 .weather-tip {
-  color: #e05d5d;
+  color: #e23e57;
   font-family: "Open Sans", sans-serif;
 }
 
-.weather-text,
 .detailed-information,
 .sun {
   margin-top: 20px;
