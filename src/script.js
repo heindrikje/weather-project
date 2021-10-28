@@ -35,6 +35,10 @@ function showWeatherConditions(response) {
   wind.innerHTML = `${response.data.wind.speed} km/h`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}% Humidity`;
+  let tempRange = document.querySelector("#temp-range");
+  tempRange.innerHTML = `${Math.round(
+    response.data.main.temp_min
+  )} / ${Math.round(response.data.main.temp_max)}°C`;
   console.log(response.data);
 }
 
