@@ -17,6 +17,10 @@ function formatDate(date) {
 let presentDate = document.querySelector(".current-time");
 presentDate.innerHTML = formatDate();
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function showWeatherConditions(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("h1");
@@ -24,7 +28,9 @@ function showWeatherConditions(response) {
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let weatherText = document.querySelector(".weather-text");
-  weatherText.innerHTML = response.data.weather[0].description;
+  weatherText.innerHTML = capitalizeFirstLetter(
+    response.data.weather[0].description
+  );
   let wind = document.querySelector("#wind-speed");
   wind.innerHTML = `${response.data.wind.speed} km/h`;
   let humidity = document.querySelector("#humidity");
@@ -80,6 +86,5 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 searchCity("New York");
 
 // Hintergrund + icons: abhängig von Wetterlage
-// noch mal neue Farben?
 // vertical lines between forecast days?
 // erster Buchstabe weather text groß
