@@ -18,7 +18,9 @@ let presentDate = document.querySelector(".current-time");
 presentDate.innerHTML = formatDate();
 
 function showWeatherConditions(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+
+  let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
   let currentCity = document.querySelector("#current-city");
@@ -87,10 +89,30 @@ function getCurrentLocation() {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
+  let temperatureElement = document.querySelector("h1");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("h1");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#unit-fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#unit-celsius");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+let celsiusTemperature = null;
+
 searchCity("New York");
 
 // Hintergrund: abhängig von Wetterlage
 // schickere Icons mit passenderen Farben
 // vertical lines between forecast days?
-// position von C/F passt bei manchen Temperaturen nicht!
 // schick: https://objective-mestorf-ce5823.netlify.app/#
