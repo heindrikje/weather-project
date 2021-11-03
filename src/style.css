@@ -82,6 +82,10 @@ form {
   margin-top: 20px;
 }
 
+.weather-text::first-letter {
+  text-transform: capitalize;
+}
+
 .day-one,
 .day-two,
 .day-three,

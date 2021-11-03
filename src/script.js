@@ -4,11 +4,11 @@ function formatDate(date) {
   let currentDay = days[now.getDay()];
   let currentHour = now.getHours();
   let currentMinute = now.getMinutes();
-  if (currentMinute <= 9) currentMinute = "0" + currentMinute;
+  if (currentMinute <= 9) currentMinute = `0${currentMinute}`;
   let currentDate = now.getDate();
-  if (currentDate <= 9) currentDate = "0" + currentDay;
+  if (currentDate <= 9) currentDate = `0${currentDate}`;
   let currentMonth = now.getMonth() + 1;
-  if (currentMonth <= 9) currentMonth = "0" + currentMonth;
+  if (currentMonth <= 9) currentMonth = `0${currentMonth}`;
   let currentYear = now.getFullYear();
   let displayDate = `${currentDay}, ${currentDate}.${currentMonth}.${currentYear} ${currentHour}:${currentMinute}`;
   return displayDate;
@@ -17,10 +17,6 @@ function formatDate(date) {
 let presentDate = document.querySelector(".current-time");
 presentDate.innerHTML = formatDate();
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function showWeatherConditions(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("h1");
@@ -28,9 +24,7 @@ function showWeatherConditions(response) {
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let weatherText = document.querySelector(".weather-text");
-  weatherText.innerHTML = capitalizeFirstLetter(
-    response.data.weather[0].description
-  );
+  weatherText.innerHTML = response.data.weather[0].description;
   let wind = document.querySelector("#wind-speed");
   wind.innerHTML = `${response.data.wind.speed} km/h`;
   let humidity = document.querySelector("#humidity");
@@ -91,4 +85,5 @@ searchCity("New York");
 
 // Hintergrund + icons: abhängig von Wetterlage
 // vertical lines between forecast days?
-// erster Buchstabe weather text groß
+// position von C/F passt bei manchen Temperaturen nicht!
+// schick: https://objective-mestorf-ce5823.netlify.app/#
