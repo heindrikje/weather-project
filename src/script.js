@@ -33,6 +33,12 @@ function showWeatherConditions(response) {
   tempRange.innerHTML = `${Math.round(
     response.data.main.temp_min
   )} / ${Math.round(response.data.main.temp_max)}°C`;
+  let weatherIcon = document.querySelector("#weather-icon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIcon.setAttribute("alt", response.data.weather[0].description);
   console.log(response.data);
 }
 
@@ -83,7 +89,8 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("New York");
 
-// Hintergrund + icons: abhängig von Wetterlage
+// Hintergrund: abhängig von Wetterlage
+// schickere Icons mit passenderen Farben
 // vertical lines between forecast days?
 // position von C/F passt bei manchen Temperaturen nicht!
 // schick: https://objective-mestorf-ce5823.netlify.app/#
