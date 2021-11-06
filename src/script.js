@@ -173,5 +173,3 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 let celsiusTemperature = null;
 
 searchCity("New York");
-
-// Hintergrund: abhängig von Wetterlage bzw. Nacht-Modus
