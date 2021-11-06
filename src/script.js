@@ -23,7 +23,7 @@ function showWeatherConditions(response) {
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
   let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
+  currentCity.innerHTML = response.data.name;
   let weatherText = document.querySelector(".weather-text");
   weatherText.innerHTML = response.data.weather[0].description;
   let wind = document.querySelector("#wind-speed");
@@ -87,13 +87,13 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 function showFahrenheitTemperature(event) {
   event.preventDefault();
   let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
-  let temperatureElement = document.querySelector("h1");
+  let temperatureElement = document.querySelector(".current-temp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function showCelsiusTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("h1");
+  let temperatureElement = document.querySelector(".current-temp");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -107,7 +107,35 @@ let celsiusTemperature = null;
 
 searchCity("New York");
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row forecast-row">`;
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2 forecast">
+       <div class="forecast-day">
+          ${day}
+       </div>
+       <div class="forecast-icon">
+          🌥 
+       </div>
+       <span class="forecast-temp-min">
+          10° 
+       </span>
+       <strong class="forecast-temp-max">18°</strong>
+      </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+showForecast();
+
 // Hintergrund: abhängig von Wetterlage
-// schickere Icons mit passenderen Farben
+// Icon nach Suche soll pulsieren, sich nicht wild drehen
 // vertical lines between forecast days?
 // schick: https://objective-mestorf-ce5823.netlify.app/#

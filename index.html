@@ -35,7 +35,7 @@
       </div>
 
       <div class="card">
-          <span class="search-section">
+          <span>
             <form id="search-form">
               <input
                 type="text"
@@ -46,7 +46,7 @@
               />
               <input class="btn btn-secondary" type="submit" value="Search" id="search-button" />
             </form>
-              <button class="btn btn-secondary current-location" id="current-location-button">
+              <button class="btn btn-secondary" id="current-location-button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -65,11 +65,11 @@
               </button>
             </span>
 
-        <div class="row">
-          <div class="col-5 city-time-temp">
-            <h2 id="current-city"></h2>
+        <div class="row main">
+          <div class="col-5">
+            <h2 class= "current-city" id="current-city"></h2>
             <div class="current-time"></div>
-            <h1></h1>
+            <h1 class= "current-temp"></h1>
             <a href="#" class="unit" id="unit-celsius">°C</a>
             <a href="#" class="unit" id="unit-fahrenheit">°F</a>
            <div class="weather-text"></div>
@@ -131,72 +131,19 @@
           </div>
 
           <div class="col-4">
-            <span class="weather-icon" id="weather-icon"></span>
+            <span class="weather-icon d-flex justify-content-center" id="weather-icon"></span>
           </div>
         </div>
-
-        <div class="row prediction-row">
-          <div class="col predicition">
-            <div class="day-one">
-              Monday
-              <br />
-              <div class="temperature-one">
-                🌥 10° <strong>18°</strong>
-              </div>
-            </div>
-          </div>
-          <div class="col predicition">
-            <div class="day-two">
-              Tuesday
-              <br />
-              <div class="temperature-two">
-                🌥 14° <strong>19°</strong>
-              </div>
-            </div>
-          </div>
-          <div class="col predicition">
-            <div class="day-three">
-              Wednesday
-              <br />
-              <div class="temperature-three">
-                🌤 12° <strong>19°</strong> 
-              </div>
-            </div>
-          </div>
-          <div class="col predicition">
-            <div class="day-four">
-              Thursday
-              <br />
-              <div class="temperature-four">
-                🌤 17° <strong>23°</strong>
-              </div>
-            </div>
-          </div>
-          <div class="col predicition">
-            <div class="day-five">
-              Friday
-              <br />
-              <div class="temperature-five">
-                🌥 13° <strong>19°</strong> 
-              </div>
-            </div>
-          </div>
-          <div class="col predicition">
-            <div class="day-six">
-              Saturday
-              <br />
-              <div class="temperature-six">
-                🌤 15° <strong>24°</strong> 
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="forecast"></div>
       </div>
+    </div>
+
       <p class="footer">
         <a href="https://github.com/heindrikje/weather-project" target="_blank">Open-source code</a>
          by Heindrikje Kuhs
       </p>
-    </div>
+    
+  </div>
     <script src="src/script.js"></script>
   </body>
 </html>
