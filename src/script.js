@@ -17,32 +17,102 @@ function formatDate(date) {
 let presentDate = document.querySelector(".current-time");
 presentDate.innerHTML = formatDate();
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
+function showForecast(response) {
+  console.log(response.data.daily);
+
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row forecast-row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 forecast">
+       <div class="forecast-day">
+          ${formatForecastDay(forecastDay.dt)}
+       </div>
+       <div class="forecast-icon">
+          <i class="wi wi-owm-${
+            forecastDay.weather[0].id
+          } fa-spin" style="-webkit-animation: fa-spin 6s infinite linear;
+            animation: fa-spin 6s infinite linear;"></i>
+       </div>
+       <span class="forecast-temp-min">
+          ${Math.round(forecastDay.temp.min)}°
+       </span>
+       <strong class="forecast-temp-max">${Math.round(
+         forecastDay.temp.max
+       )}°</strong>
+      </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let urlBase = "https://api.openweathermap.org/data/2.5/onecall?";
+  let apiKey = "203fa770242fcd2b9555d832a88ea567";
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiUrl = `${urlBase}lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 function showWeatherConditions(response) {
   celsiusTemperature = response.data.main.temp;
+
   let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
+
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
+
   let weatherText = document.querySelector(".weather-text");
   weatherText.innerHTML = response.data.weather[0].description;
+
   let wind = document.querySelector("#wind-speed");
   wind.innerHTML = `${response.data.wind.speed} km/h`;
+
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}% Humidity`;
+
   let tempRange = document.querySelector("#temp-range");
   tempRange.innerHTML = `${Math.round(
     response.data.main.temp_min
   )} / ${Math.round(response.data.main.temp_max)}°C`;
+
   let iconId = response.data.weather[0].id;
   let weatherIcon = document.querySelector("#weather-icon");
-  weatherIcon.innerHTML = `<i class="wi wi-owm-${iconId} fa-pulse"></i>`;
+  weatherIcon.innerHTML = `<i class="wi wi-owm-${iconId} fa-spin"
+  style="-webkit-animation: fa-spin 6s infinite linear;
+  animation: fa-spin 6s infinite linear;"></i>`;
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
+  let urlBase = "https://api.openweathermap.org/data/2.5/weather?q=";
   let apiKey = "203fa770242fcd2b9555d832a88ea567";
-  let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${urlBase}${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeatherConditions);
 }
 
@@ -65,8 +135,7 @@ function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "203fa770242fcd2b9555d832a88ea567";
-  let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeatherConditions);
   let reverseApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
   axios.get(reverseApiUrl).then(showCurrentCity);
@@ -76,7 +145,7 @@ function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
     alert(
-      "Sorry, we couldn't find your current position. Please type your city, instead"
+      "Sorry, we couldn't find your current position. Please type your city, instead."
     );
   }
 }
@@ -107,35 +176,4 @@ let celsiusTemperature = null;
 
 searchCity("New York");
 
-function showForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row forecast-row">`;
-
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2 forecast">
-       <div class="forecast-day">
-          ${day}
-       </div>
-       <div class="forecast-icon">
-          🌥 
-       </div>
-       <span class="forecast-temp-min">
-          10° 
-       </span>
-       <strong class="forecast-temp-max">18°</strong>
-      </div>`;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
-
-showForecast();
-
-// Hintergrund: abhängig von Wetterlage
-// Icon nach Suche soll pulsieren, sich nicht wild drehen
-// vertical lines between forecast days?
-// schick: https://objective-mestorf-ce5823.netlify.app/#
+// Hintergrund: abhängig von Wetterlage bzw. Nacht-Modus
