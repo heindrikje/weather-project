@@ -91,8 +91,7 @@ form {
   text-transform: capitalize;
 }
 
-.forecast,
-.footer {
+.forecast {
   color: #6d767d;
   font-family: "Open Sans", sans-serif;
   text-align: center;
@@ -106,6 +105,17 @@ form {
 
 .forecast-row {
   margin: 30px 0 10px 0;
+}
+
+.footer {
+  color: #5c636a;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  font-size: 14px;
+}
+
+.git-link {
+  text-decoration: none;
 }
 
 #video_background {
