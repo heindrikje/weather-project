@@ -19,6 +19,20 @@ form {
   font-family: "Poppins", sans-serif;
 }
 
+#search-bar {
+  padding: 10px 340px 10px 5px;
+  border: 1px solid #00a19d;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 10px 15px;
+}
+
 .current-temp,
 .current-city,
 .unit {
@@ -34,22 +48,8 @@ form {
   margin: 0;
 }
 
-#search-bar {
-  padding: 10px 340px 10px 5px;
-  border: 1px solid #00a19d;
-  border-radius: 4px;
-  font-size: 13px;
-  margin-bottom: 40px;
-}
-
 .main {
   margin: 0;
-}
-
-.btn {
-  border-radius: 4px;
-  font-size: 13px;
-  padding: 10px 15px;
 }
 
 .weather-icon {
@@ -71,15 +71,15 @@ form {
   font-size: 22px;
 }
 
-.current-time {
-  margin-bottom: 20px;
-}
-
 .current-time,
 .weather-text,
 .detailed-information {
   color: #e23e57;
   font-family: "Open Sans", sans-serif;
+}
+
+.current-time {
+  margin-bottom: 20px;
 }
 
 .detailed-information {
@@ -91,29 +91,21 @@ form {
   text-transform: capitalize;
 }
 
-.day-one {
-  transition: all 100ms ease-in-out;
-}
-
-.day-one:hover {
-  font-weight: bolder;
-}
-
-.forecast {
+.forecast,
+.footer {
   color: #6d767d;
   font-family: "Open Sans", sans-serif;
   text-align: center;
   padding-left: 0;
+  transition: all 100ms ease-in-out;
+}
+
+.forecast:hover {
+  font-weight: bolder;
 }
 
 .forecast-row {
   margin: 30px 0 10px 0;
-}
-
-.footer {
-  font-size: 14px;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
 }
 
 #video_background {
