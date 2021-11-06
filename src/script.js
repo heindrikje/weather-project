@@ -19,7 +19,6 @@ presentDate.innerHTML = formatDate();
 
 function showWeatherConditions(response) {
   celsiusTemperature = response.data.main.temp;
-
   let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature}`;
@@ -35,13 +34,9 @@ function showWeatherConditions(response) {
   tempRange.innerHTML = `${Math.round(
     response.data.main.temp_min
   )} / ${Math.round(response.data.main.temp_max)}°C`;
+  let iconId = response.data.weather[0].id;
   let weatherIcon = document.querySelector("#weather-icon");
-  weatherIcon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  weatherIcon.setAttribute("alt", response.data.weather[0].description);
-  console.log(response.data);
+  weatherIcon.innerHTML = `<i class="wi wi-owm-${iconId} fa-pulse"></i>`;
 }
 
 function searchCity(city) {

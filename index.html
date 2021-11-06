@@ -9,6 +9,7 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +18,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/weather.icons.min.css" />
     <title>What Weather?</title>
   </head>
   <body>
@@ -64,23 +66,16 @@
             </span>
 
         <div class="row">
-          <div class="col-6"><h2 id="current-city"></h2>
+          <div class="col-5 city-time-temp">
+            <h2 id="current-city"></h2>
             <div class="current-time"></div>
-          </div>
-          <div class="col-6">
-            <img src="" alt="" id="weather-icon" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
             <h1></h1>
             <a href="#" class="unit" id="unit-celsius">°C</a>
             <a href="#" class="unit" id="unit-fahrenheit">°F</a>
            <div class="weather-text"></div>
           </div>
-          
-          <div class="col-3 detailed-information text-center">
+
+          <div class="col-3 detailed-information">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -133,6 +128,10 @@
               <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
            </svg>
            <span id="temp-range"></span>
+          </div>
+
+          <div class="col-4">
+            <span class="weather-icon" id="weather-icon"></span>
           </div>
         </div>
 

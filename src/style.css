@@ -45,6 +45,12 @@ form {
   padding: 10px 15px;
 }
 
+.weather-icon {
+  font-size: 100px;
+  color: #6d767d;
+  transform: rotate(234deg);
+}
+
 .unit {
   color: #00a19d;
   font-family: "Poppins", sans-serif;
@@ -63,13 +69,16 @@ form {
   font-size: 22px;
 }
 
+.city-time-temp {
+  padding-right: 0;
+}
+
 .current-time {
   margin-bottom: 20px;
 }
 
 .current-time,
 .feels-like,
-.sun,
 .weather-text,
 .detailed-information,
 .weather-tip {
@@ -77,9 +86,9 @@ form {
   font-family: "Open Sans", sans-serif;
 }
 
-.detailed-information,
-.sun {
-  margin-top: 20px;
+.detailed-information {
+  margin-top: 100px;
+  padding-left: 0;
 }
 
 .weather-text::first-letter {
