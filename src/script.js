@@ -46,10 +46,7 @@ function showForecast(response) {
           ${formatForecastDay(forecastDay.dt)}
        </div>
        <div class="forecast-icon">
-          <i class="wi wi-owm-${
-            forecastDay.weather[0].id
-          } fa-spin" style="-webkit-animation: fa-spin 6s infinite linear;
-            animation: fa-spin 6s infinite linear;"></i>
+          <i class="wi wi-owm-${forecastDay.weather[0].id}"></i>
        </div>
        <span class="forecast-temp-min">
           ${Math.round(forecastDay.temp.min)}°
@@ -100,9 +97,8 @@ function showWeatherConditions(response) {
 
   let iconId = response.data.weather[0].id;
   let weatherIcon = document.querySelector("#weather-icon");
-  weatherIcon.innerHTML = `<i class="wi wi-owm-${iconId} fa-spin"
-  style="-webkit-animation: fa-spin 6s infinite linear;
-  animation: fa-spin 6s infinite linear;"></i>`;
+  weatherIcon.innerHTML = `<i class="wi wi-owm-${iconId}"
+  ></i>`;
 
   getForecast(response.data.coord);
 }
